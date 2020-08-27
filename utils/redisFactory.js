@@ -1,5 +1,5 @@
 const redis = require('redis');
-const retryStrategy = require('./retry-strategy');
+const retryStrategy = require('../middlewares/retry-strategy');
 require('dotenv').config();
 
 class redisFactory {
