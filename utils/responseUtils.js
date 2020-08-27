@@ -6,11 +6,12 @@ class ResponseUtils {
 		this.data = null;
 	}
 
-	setSuccess(success = true, statusCode, message, data /*, count =1*/) {
-		this.success = success;
+	setSuccess(statusCode, message, data /*, count =1*/) {
+		this.success = true;
 		this.statusCode = statusCode;
 		this.message = message;
 		this.data = data;
+		return this;
 	}
 
 	setError(statusCode, message) {
@@ -18,6 +19,7 @@ class ResponseUtils {
 		this.statusCode = statusCode;
 		this.message = message;
 		this.data = [];
+		return this;
 	}
 
 	send(res) {
