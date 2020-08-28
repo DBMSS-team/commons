@@ -1,8 +1,8 @@
 module.exports = {
     messages: require('./constants/messages'),
-    redisTable: require('./constants/redisTable'),
+    redisTables: require('./constants/redisTables'),
     authorization: require('./middlewares/authorization'),
-    retryStrategy: require('./middlewares/authorization'),
+    retryStrategy: require('./middlewares/retryStrategy'),
     httpCodes: require('./utils/httpCodes'),
     RedisFactory: require('./utils/redisFactory'),
     ResponseUtils: require('./utils/responseUtils'),
