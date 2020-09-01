@@ -6,4 +6,5 @@ module.exports = {
     httpCodes: require('./utils/httpCodes'),
     RedisFactory: require('./utils/redisFactory'),
     ResponseUtils: require('./utils/responseUtils'),
+    logger: require('./utils/logger')
 }
