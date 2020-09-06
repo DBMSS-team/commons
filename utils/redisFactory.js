@@ -1,17 +1,16 @@
-const redis = require('redis');
+
+
+const redis = require("redis");
 const { retryStrategy } = require(__commons);
-require('dotenv').config();
+require("dotenv").config();
 
 class redisFactory {
 
-	static options = {
+	static redisClient = redis.createClient({
 		host: process.env.REDIS_HOST,
 		port: process.env.REDIS_PORT,
 		password: process.env.REDIS_PASSWORD,
-	};
-
-
-	static redisClient = redis.createClient(redisFactory.options);
+	});
 
 	/**
 	 * Get value
@@ -20,7 +19,7 @@ class redisFactory {
 	static get(key) {
 		redisFactory.redisClient.get(key, (err, value) => {
 			if (err) {
-				throw new Error('Data does not exist');
+				throw new Error("Data does not exist");
 			}
 			return value;
 		});
@@ -33,7 +32,7 @@ class redisFactory {
 	static set(key) {
 		redisFactory.redisClient.set(key, (err, reply) => {
 			if (err) {
-				throw new Error('Could not set the data');
+				throw new Error("Could not set the data");
 			}
 			return reply;
 		});
@@ -48,7 +47,7 @@ class redisFactory {
 		var argsArray = Array.prototype.slice.call(args);
 		redisFactory.redisClient.hmset(key, argsArray, (err, reply) => {
 			if (err) {
-				throw new Error('Could not set data in redis');
+				throw new Error("Could not set data in redis");
 			}
 			return reply;
 		});
@@ -63,7 +62,7 @@ class redisFactory {
 		return new Promise((resolve, reject) => {
 			redisFactory.redisClient.hmget(tableName, hashIDs, (err, data) => {
 				if (err) {
-					reject(new Error('Data does not exist'));
+					reject(new Error("Data does not exist"));
 				}
 				resolve(JSON.parse(data[0]));
 			});
@@ -77,7 +76,7 @@ class redisFactory {
 	static hlen(tableName) {
 		redisFactory.redisClient.hlen(tableName, (err, length) => {
 			if (err) {
-				throw new Error('Unexpected Error');
+				throw new Error("Unexpected Error");
 			}
 			return length;
 		});

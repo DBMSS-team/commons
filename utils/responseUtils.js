@@ -6,7 +6,7 @@ class ResponseUtils {
 		this.data = null;
 	}
 
-	setSuccess(statusCode, message, data /*, count =1*/) {
+	setSuccess(statusCode, message, data /* , count =1*/) {
 		this.success = true;
 		this.statusCode = statusCode;
 		this.message = message;
@@ -27,7 +27,7 @@ class ResponseUtils {
 			success: this.success,
 			statusCode: this.statusCode,
 			message: this.message,
-			entities: this.data,
+			entities: this.data
 		};
 		res.status(this.statusCode).json(result);
 

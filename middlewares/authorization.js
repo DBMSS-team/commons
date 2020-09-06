@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 function getAccessTokenFromHeader(req) {
@@ -11,9 +11,9 @@ async function authorizationMiddleware(request, response, nextHandler) {
 	try {
 		if (accessToken) {
 			const tokenPayload = await jwt.verify(accessToken, JWT_SECRET_KEY);
-			if (tokenPayload.type !== 'access') throw new Error('Wrong token type');
+			if (tokenPayload.type !== "access") { throw new Error("Wrong token type"); }
 
-			response.user_data = tokenPayload;
+			response.userData = tokenPayload;
 		}
 		nextHandler();
 	} catch (error) {
@@ -21,4 +21,6 @@ async function authorizationMiddleware(request, response, nextHandler) {
 	}
 }
 
-module.exports = { authorizationMiddleware, getAccessTokenFromHeader };
+module.exports = {
+	authorizationMiddleware, getAccessTokenFromHeader
+};

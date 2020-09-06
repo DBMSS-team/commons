@@ -1,3 +1,5 @@
-const loggerConfig = require("./log4js.json")
+const loggerConfig = require("./log4js.json");
 
-module.exports = { loggerConfig };
+module.exports = {
+	loggerConfig
+};
