@@ -1,16 +1,16 @@
-
-
 const redis = require("redis");
 const { retryStrategy } = require(__commons);
 require("dotenv").config();
 
 class redisFactory {
 
-	static redisClient = redis.createClient({
+	static options = {
 		host: process.env.REDIS_HOST,
 		port: process.env.REDIS_PORT,
 		password: process.env.REDIS_PASSWORD,
-	});
+	};
+
+	static redisClient = redis.createClient(options);
 
 	/**
 	 * Get value
@@ -44,7 +44,7 @@ class redisFactory {
 	 * @param  {...any} args List of Argument to be added
 	 */
 	static hmSet(key, ...args) {
-		var argsArray = Array.prototype.slice.call(args);
+		let argsArray = Array.prototype.slice.call(args);
 		redisFactory.redisClient.hmset(key, argsArray, (err, reply) => {
 			if (err) {
 				throw new Error("Could not set data in redis");
