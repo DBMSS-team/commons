@@ -1,7 +1,7 @@
 const commandFactory = require("express-hystrix");
 const Toobusy = require("hystrix-too-busy");
 
-module.exports = (app) => {
+module.exports.use = (app) => {
 	/** too busy function
 	 *
 	 * @param {*} config
