@@ -10,7 +10,7 @@ class redisFactory {
 		password: process.env.REDIS_PASSWORD,
 	};
 
-	static redisClient = redis.createClient(options);
+	static redisClient = redis.createClient(redisFactory.options);
 
 	/**
 	 * Get value
