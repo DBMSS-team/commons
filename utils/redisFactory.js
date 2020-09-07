@@ -1,5 +1,4 @@
 const redis = require("redis");
-const { retryStrategy } = require(__commons);
 require("dotenv").config();
 
 class redisFactory {
