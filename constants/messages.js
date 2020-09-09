@@ -9,5 +9,8 @@ module.exports = {
 	PASSWORD_CHANGED: "Password is changed",
 	INVALID_TOKEN: "Invalid access/refresh token",
 	USER_EXISTS: "User already exists with this username",
-	USER_CREATED: "User created"
+	USER_CREATED: "User created",
+	USERS_FETCHED: "All users fetched",
+	USER_FETCHED: "User fetched",
+	USER_UPDATED: "User updated"
 };
