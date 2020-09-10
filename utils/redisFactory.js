@@ -1,4 +1,5 @@
 const redis = require("redis");
+const retryStrategy = require("../middlewares/retryStrategy");
 require("dotenv").config();
 
 class redisFactory {
@@ -7,6 +8,8 @@ class redisFactory {
 		host: process.env.REDIS_HOST,
 		port: process.env.REDIS_PORT,
 		password: process.env.REDIS_PASSWORD,
+		// eslint-disable-next-line camelcase
+		retry_strategy: retryStrategy
 	};
 
 	static redisClient = redis.createClient(redisFactory.options);
