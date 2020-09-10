@@ -53,7 +53,7 @@ class ResponseUtils {
 	}
 
 	/**
-	 * Send generated response to attached client(s)
+	 *
 	 * @param {*} res
 	 */
 	send(res) {
@@ -61,12 +61,18 @@ class ResponseUtils {
 			// eslint-disable-next-line no-magic-numbers
 			res.set(header[0], header[1]);
 		});
-		if (this.success) {
+		if (this.success && this.data) {
 			appLogger.info(this.message);
-			res.json(this.data);
+			res.status(this.headers.status).json(this.data);
+		} else if (this.success) {
+			appLogger.info(this.message);
+			res.sendStatus(this.headers.status);
+		} else if (this.message) {
+			errorLogger.error(this.message);
+			res.status(this.headers.status).json(this.message);
 		} else {
 			errorLogger.error(this.message);
-			res.json(this.message);
+			res.sendStatus(this.headers.status);
 		}
 	}
 }

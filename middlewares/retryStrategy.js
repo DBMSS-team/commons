@@ -21,6 +21,6 @@ module.exports = function retryStrategy(options) {
 		return undefined;
 	}
 	// reconnect after
-	appLogger.info(`Reconnect after ${Math.pow(2, options.attempt) * 500 / 1000} secs`);
+	appLogger.warn(`Reconnect after ${Math.pow(2, options.attempt) * 500 / 1000} secs`);
 	return Math.pow(2, options.attempt) * 500;
 };
