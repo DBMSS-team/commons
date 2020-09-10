@@ -12,5 +12,8 @@ module.exports = {
 	USER_CREATED: "User created",
 	USERS_FETCHED: "All users fetched",
 	USER_FETCHED: "User fetched",
-	USER_UPDATED: "User updated"
+	USER_UPDATED: "User updated",
+	ADDED_SUCCESSFULLY: "Data added successfully",
+	UPDATED_SUCCESSFULLY: "Data updated successfully",
+	DELETED_SUCCESSFULLY: "Data deleted successfully"
 };
